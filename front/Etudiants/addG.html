@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./addG.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <title>Ajouter groupe</title>
+  </head>
+  <body>
+    <nav class="navbar-container">
+      <img src="../../images/logo.svg" alt="logo" />
+      <ul>
+        <li><a href="../home page/index.html">ACCUEIL</a></li>
+        <li><a href="#">COMPOSANATS</a></li>
+        <li><a href="../Etudiants/list.html">ETUDIANTS</a></li>
+      </ul>
+    </nav>
+    <div class="container">
+      <h1>AJOUTER UN GROUPE</h1>
+      <div class="etud">
+        <p>Le premier etudiant</p>
+        <input type="text" placeholder="Nom" />
+        <input type="text" placeholder="Prenom" />
+        <select name="Promo">
+          <option value="1cp">1cp</option>
+          <option value="2cp">2cp</option>
+          <option value="1cs">1cs</option>
+          <option value="2cs">2cs</option>
+          <option value="3cs">3cs</option>
+        </select>
+      </div>
+      <div class="etud">
+        <p>Le deusieme etudiant</p>
+        <input type="text" placeholder="Nom" />
+        <input type="text" placeholder="Prenom" />
+        <select name="Promo">
+          <option value="1cp">1cp</option>
+          <option value="2cp">2cp</option>
+          <option value="1cs">1cs</option>
+          <option value="2cs">2cs</option>
+          <option value="3cs">3cs</option>
+        </select>
+      </div>
+      <p>Composants dans la boite</p>
+      <div class="comps">
+        <div class="comp">
+          <p>Resistance</p>
+          <form id="myform" method="POST" class="quantity" action="#">
+            <input
+              type="button"
+              value="-"
+              class="qtyminus minus"
+              field="quantity"
+            />
+            <input type="text" name="quantity" value="0" class="qty" />
+            <input
+              type="button"
+              value="+"
+              class="qtyplus plus"
+              field="quantity"
+            />
+          </form>
+        </div>
+        <div class="comp">
+          <p>Led</p>
+          <form id="myform" method="POST" class="quantity" action="#">
+            <input
+              type="button"
+              value="-"
+              class="qtyminus minus"
+              field="quantity"
+            />
+            <input type="text" name="quantity" value="0" class="qty" />
+            <input
+              type="button"
+              value="+"
+              class="qtyplus plus"
+              field="quantity"
+            />
+          </form>
+        </div>
+        <div class="comp">
+          <p>Condensateur</p>
+          <form id="myform" method="POST" class="quantity" action="#">
+            <input
+              type="button"
+              value="-"
+              class="qtyminus minus"
+              field="quantity"
+            />
+            <input type="text" name="quantity" value="0" class="qty" />
+            <input
+              type="button"
+              value="+"
+              class="qtyplus plus"
+              field="quantity"
+            />
+          </form>
+        </div>
+        <div class="comp">
+          <p>Interrepteur a gliciere</p>
+          <form id="myform" method="POST" class="quantity" action="#">
+            <input
+              type="button"
+              value="-"
+              class="qtyminus minus"
+              field="quantity"
+            />
+            <input type="text" name="quantity" value="0" class="qty" />
+            <input
+              type="button"
+              value="+"
+              class="qtyplus plus"
+              field="quantity"
+            />
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <img src="../../images/esi-logo.png" alt="esi-logo" />
+      <div>
+        <h3>LOCALISATION</h3>
+        <p>BP 73, Post Office EL WIAM Sidi Bel Abbés 22016, Algeria</p>
+      </div>
+      <div>
+        <h3>CONTACT</h3>
+        <p>+213-48-74-94-52</p>
+        <p>contact@esi-sba.dz</p>
+      </div>
+      <div class="icons">
+        <h3>RESEAUX</h3>
+        <img src="../../images/linkedin.png" alt="linkedin" />
+        <img src="../../images/facebook.png" alt="facebook" />
+        <img src="../../images/youtube.png" alt="youtube" />
+      </div>
+    </div>
+  </body>
+  <script>
+    jQuery(document).ready(($) => {
+      $(".quantity").on("click", ".plus", function (e) {
+        let $input = $(this).prev("input.qty");
+        let val = parseInt($input.val());
+        $input.val(val + 1).change();
+      });
+
+      $(".quantity").on("click", ".minus", function (e) {
+        let $input = $(this).next("input.qty");
+        var val = parseInt($input.val());
+        if (val > 0) {
+          $input.val(val - 1).change();
+        }
+      });
+    });
+  </script>
+</html>
