@@ -4,7 +4,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/8eb2c0f0fd.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./ajoutComposant.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+    $(document).ready(function(){
+        $(".reset").click(function(){
+            $("#Form").trigger("reset");
+        });
+    });
+    </script>
     <title>Ajouter un composant</title>
 </head>
 <body>
@@ -12,14 +21,47 @@
         <img src="../../images/logo.svg" alt="logo">
         <ul>
             <li><a href="../home page/index.html">ACCUEIL</a></li>
-            <li><a href="#">COMPOSANATS</a></li>
+            <li><a href="../Composants/board.html">COMPOSANATS</a></li>
             <li><a href="../Etudiants/list.html">ETUDIANTS</a></li>
         </ul>
     </nav>
     
     <div class="header">
         <div class="return">
-         <a href="./board.html">Retour à la page précedente</a>
+            <a href="./board.html"><i class="fa-solid fa-arrow-left"></i>Retour à la page précedente</a>
+        </div>
+    </div>
+
+    <div class="container">  
+        <form id="Form" method="post" action="">
+            <h2 id="label">Ajouter un nouveau composant</h2> 
+            <br/>     
+            <label for="nom">Nom</label> 
+                <select id="nom" >
+                    <option value="disp"> Diode</option>
+                    <option value="enPanne" > Résistance</option>
+                </select>
+            <br/>
+            <label for="date">Date d'achat</label>
+            <input type="date" placeholder="" name="date" id="date"> 
+            <br/>
+            <label for="qte">Quantité</label>
+            <input type="number" value="0" name="qte" id="qte"> 
+            <br/>
+            <label for="etat">L'état de composant</label>
+            <select id="etat" >
+                <optgroup label="Etat">
+                    <option value="disp"> Disponible</option>
+                    <option value="enPanne" > En panne</option>
+                    <option value="perdu" > Perdu</option>
+                </optgroup>
+            </select>
+            <br/>
+            <button class="btn reset" ><i class="fa-solid fa-rotate-right"></i>Réinitialiser</button>
+            <button class="btn submit-btn" type="submit"><i class="fa-solid fa-check"></i>Ajouter</button>
+        </form>
+        <div class="image">
+            <img src="../../images/resistance.png" alt="image-composant">
         </div>
     </div>
     
