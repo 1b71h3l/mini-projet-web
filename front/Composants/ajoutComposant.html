@@ -28,7 +28,7 @@
     
     <div class="header">
         <div class="return">
-            <a href="./board.html"><i class="fa-solid fa-arrow-left"></i>Retour à la page précedente</a>
+            <button onclick="history.back()" ><i class="fa-solid fa-arrow-left"></i>Retour à la page précedente</button>
         </div>
     </div>
 
@@ -45,9 +45,6 @@
             <label for="date">Date d'achat</label>
             <input type="date" placeholder="" name="date" id="date"> 
             <br/>
-            <label for="qte">Quantité</label>
-            <input type="number" value="0" name="qte" id="qte"> 
-            <br/>
             <label for="etat">L'état de composant</label>
             <select id="etat" >
                 <optgroup label="Etat">
@@ -61,7 +58,7 @@
             <button class="btn submit-btn" type="submit"><i class="fa-solid fa-check"></i>Ajouter</button>
         </form>
         <div class="image">
-            <img src="../../images/resistance.png" alt="image-composant">
+            <img src="../../images/image.png" alt="image-composant">
         </div>
     </div>
     

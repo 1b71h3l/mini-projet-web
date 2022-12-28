@@ -39,15 +39,17 @@ body{
     color: white;
 }
 
-.header a {
+.header button {
     margin-left: 10%;
     font-size: 20px;
     color: #fff;
+    background-color: transparent;
+    border: transparent;
     transition: 0.03s;
     text-decoration: none;
 }
 
-.header a:hover {
+.header button:hover {
     color: #6D90E1;
     text-decoration: underline;
 }
@@ -86,7 +88,24 @@ body{
         line-height: 45px;
 }
 
-.container form input , select {
+.container form input[type=text] {
+	padding:10px 5px;
+	width:100%;
+	outline:none;
+	display:inline-block;
+	-webkit-box-sizing:border-box;
+	   -moz-box-sizing:border-box;
+	        box-sizing:border-box;
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom: 3px solid #6D90E1;
+    color: rgb(0, 0, 0);
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.container form input[type=date] , select {
     cursor:pointer;
 	padding:10px 5px;
 	width:100%;
@@ -103,6 +122,7 @@ body{
 	     -o-transition:0.2s ease all;
 	        transition:0.2s ease all;
 }
+
 
 
 [type="date"]::-webkit-calendar-picker-indicator {

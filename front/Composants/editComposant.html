@@ -21,11 +21,35 @@
     
     <div class="header">
         <div class="return">
-            <a href="./showPieces.html"><i class="fa-solid fa-arrow-left"></i>Retour à la page précedente</a>
+            <button onclick="history.back()" ><i class="fa-solid fa-arrow-left"></i>Retour à la page précedente</button>
         </div>
     </div>
 
-    
+    <div class="container">  
+        <form id="Form" method="post" action="">
+        <h2 id="label">Modifier un composant</h2>
+        <label for="nom">Nom</label> 
+        <input type="text" value="Résistance" name="nom" id="nom" disabled="disabled"> 
+        <br/>
+        <label for="date">Date d'achat</label>
+        <input type="text" value="21/12/2022" name="nom" id="nom" disabled="disabled"> 
+        <br/>    
+            <label for="etat">L'état de composant</label>
+            <select id="etat" >
+                <optgroup label="Etat">
+                    <option value="disp"> Disponible</option>
+                    <option value="enPanne" > En panne</option>
+                    <option value="perdu" > Perdu</option>
+                </optgroup>
+            </select>
+            <br/>
+            <button class="btn reset" ><i class="fa-solid fa-rotate-right"></i>Réinitialiser</button>
+            <button class="btn submit-btn" type="submit"><i class="fa-solid fa-check"></i>Modifier</button>
+        </form>
+        <div class="image">
+            <img src="../../images/resistance.png" alt="image-composant">
+        </div>
+    </div>
 
     <div class="footer">
         <img src="../../images/esi-logo.png" alt="esi-logo">

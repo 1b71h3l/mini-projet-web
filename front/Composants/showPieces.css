@@ -44,14 +44,16 @@ body {
     align-items: center;
 }
 
-.return a {
+.return button {
     font-size: 20px;
     color: #fff;
+    background-color: transparent;
+    border: 0;
     transition: 0.03s;
     text-decoration: none;
 }
 
-.return a:hover {
+.return button:hover {
     color: #6D90E1;
     text-decoration: underline;
 }
@@ -183,6 +185,12 @@ select {
 .filter .btn:hover {
     background: #081369;
     border: 4px solid rgba(109, 144, 225, 0.7);
+}
+
+.header hr {
+    background: #6D90E1;
+    border: 1px solid #6D90E1;
+    margin: 10px 100px 40px 100px;
 }
 
 .table-container {
@@ -386,6 +394,10 @@ td:nth-of-type(4) {
     .filter .download {
         margin: 2% 40%;
         padding: 0;
+    }
+
+    .header hr {
+        margin: 10px 60px 40px 60px;
     }
 
     .table-header {

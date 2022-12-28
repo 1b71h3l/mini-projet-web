@@ -107,58 +107,14 @@ body {
     font-size: 17px;
 }
 
-.filter {
+.download {
     display: flex;
     align-items: center;
     justify-content: space-around;
     height: 90px;
 }
 
-.filter input[type=date],
-select {
-    border-radius: 40px;
-    border: 2px solid #FFFFFF;
-    padding: 5px;
-    width: 300px;
-    height: 37px;
-    background-color: #081369;
-    padding: 0 20px;
-    color: white;
-    outline: none;
-    cursor: pointer;
-}
-
-/*.filter input[type=date] {
-    margin: 0 20px 0 90px;
-    background-image: url('../../images/115762_calendar_date_event_month_icon.svg') ;
-    background-position: 96% 50% ;
-    background-repeat: no-repeat;
-    background-size: 22px 22px;
-}*/
-
-[type="date"]::-webkit-calendar-picker-indicator {
-    background: url('../../images/115762_calendar_date_event_month_icon.svg') center;
-    cursor: pointer;
-}
-
-.filter select {
-    position: relative;
-    margin: 0 40px 0 0px;
-    -webkit-appearance: none;
-    background-color: transparent;
-    background-image: url('../../images/211687_down_arrow_icon.svg');
-    background-position: 96% 50%;
-    background-repeat: no-repeat;
-    background-size: 25px 25px;
-    transition: 0.3s;
-}
-
-.filter select:focus {
-    background-color: transparent;
-    color: #6D90E1;
-}
-
-.filter .btn {
+.download .btn {
     width: 160px;
     height: 20px;
     background: rgba(109, 144, 225, 0.7);
@@ -180,12 +136,6 @@ select {
     border: 4px solid rgba(109, 144, 225, 0.7);
 }
 
-.header hr {
-    background: #6D90E1;
-    border: 1px solid #6D90E1;
-    margin: 10px 100px;
-}
-
 .board-container {
     display: grid;
     grid-template-columns: repeat(4, 5fr);
@@ -202,6 +152,11 @@ select {
     justify-content: center;
     min-height: 230px;
 }
+.header hr {
+    background: #6D90E1;
+    border: 1px solid #6D90E1;
+    margin: 10px 100px;
+}
 
 .composant img {
     padding: 0px;
@@ -210,12 +165,15 @@ select {
     align-items: center;
     justify-content: center;
     margin: 5% 35%;
+    width: 85px;
+    height: 90px;
 }
 
 .composant-info {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
+    padding-bottom: 30px;
 }
 
 .composant-info .name {
@@ -228,20 +186,6 @@ select {
     font-style: normal;
     font-size: 15px;
     margin: 0% 50%;
-}
-
-.composant-info .etat {
-    font-style: normal;
-    font-size: 16px;
-    color: #51EB09;
-}
-
-.composant-info .date-achat {
-    background-color: rgba(35, 31, 32, 0.3);
-    border-radius: 30px;
-    color: white;
-    font-size: 16px;
-    padding: 0 10px;
 }
 
 .composant hr {
@@ -262,7 +206,7 @@ select {
 
 .composant-actions i {
     color: black;
-    font-size: 1.5rem;
+    font-size: 2rem;
 }
 
 .footer {
@@ -334,48 +278,12 @@ select {
         font-size: 15px;
     }
 
-    .filter {
-        display: block;
-    }
-
-    .filter input[type=date],
-    select {
-        width: 150px;
-    }
-
-    .filter input[type=date] {
-        margin: 0 10px 0 20px;
-        background-position: 90% 50%;
-        background-size: 15px 15px;
-    }
-
-    .filter select {
-        margin: 0 10px 0 0px;
-        background-position: 90% 50%;
-        background-size: 15px 15px;
-    }
-
-    .filter select:focus {
-        background-color: transparent;
-        color: #6D90E1;
-    }
-
-    .filter .btn {
-        width: 90px;
-        height: 20px;
-        padding: 15px;
-        cursor: pointer;
-        font-size: 12px;
-    }
-
-    .filter .download {
+    .download {
         margin: 2% 40%;
         padding: 0;
     }
 
     .header hr {
-        background: #6D90E1;
-        border: 1px solid #6D90E1;
         margin: 10px 60px;
     }
 
