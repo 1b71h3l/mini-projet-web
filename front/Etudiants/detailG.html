@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./list.css" />
-    <title>Etudiants</title>
+    <link rel="stylesheet" href="./detailG.css" />
+    <title>Groupe</title>
   </head>
   <body>
     <nav class="navbar-container">
@@ -16,42 +16,44 @@
         <li><a href="../Etudiants/list.html">ETUDIANTS</a></li>
       </ul>
     </nav>
-    <div class="header">
-      <div class="search">
-        <form action="/action_page.php">
-          <input type="text" placeholder="Chercher un groupe" name="search" />
-        </form>
+    <div class="container">
+      <h1>Les informations du groupe</h1>
+      <h3>Le premier etudiant</h3>
+      <div class="etud">
+        <p>Nom</p>
+        <input type="text" />
+        <p>Prenom</p>
+        <input type="text" />
       </div>
-      <div class="stroke">
-        <p><a href="./addG.html">AJOUTER</a></p>
+      <h3>Le Deuxieme etudiant</h3>
+      <div class="etud">
+        <p>Nom</p>
+        <input type="text" />
+        <p>Prenom</p>
+        <input type="text" />
       </div>
-    </div>
-    <div class="list-container">
-      <a href="./detailG.html">
-        <div class="card">
-          <h3>2cs</h3>
-          <p>Belouad & Hattabi</p>
+      <h3>Composants dans la boite</h3>
+      <div class="comp-container">
+        <div class="comp">
+          <p>Resistance</p>
+          <input type="number" min="0" />
         </div>
-      </a>
-      <div class="card">
-        <h3>2cs</h3>
-        <p>Belouad & Hattabi</p>
+        <div class="comp">
+          <p>LED</p>
+          <input type="number" min="0" />
+        </div>
+        <div class="comp">
+          <p>Condensateur</p>
+          <input type="number" min="0" />
+        </div>
+        <div class="comp">
+          <p>Interrepteur a gliciere</p>
+          <input type="number" min="0" />
+        </div>
       </div>
-      <div class="card">
-        <h3>2cs</h3>
-        <p>Belouad & Hattabi</p>
-      </div>
-      <div class="card">
-        <h3>2cs</h3>
-        <p>Belouad & Hattabi</p>
-      </div>
-      <div class="card">
-        <h3>2cs</h3>
-        <p>Belouad & Hattabi</p>
-      </div>
-      <div class="card">
-        <h3>2cs</h3>
-        <p>Belouad & Hattabi</p>
+      <div class="btns">
+        <button id="supprimer">SUPPRIMER</button>
+        <button id="modifier">MODIFIER</button>
       </div>
     </div>
     <div class="footer">
