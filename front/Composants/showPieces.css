@@ -212,7 +212,7 @@ select {
     color: #081369;
     font-weight: 500;
     font-size: 25px;
-    margin-right: 20%;
+    margin-right: 0%;
 }
 
 .table-header img {
@@ -252,6 +252,7 @@ td {
     color: white;
     padding: 0 10px;
 }*/
+
 td:nth-of-type(4) {
     display: flex;
     align-items: center;

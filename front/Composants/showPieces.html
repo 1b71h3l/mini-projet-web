@@ -8,6 +8,7 @@
     <script src="https://kit.fontawesome.com/8eb2c0f0fd.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./showPieces.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript" src="showPieces.js"></script>
     <title>Voir Composant</title>
 </head>
 
@@ -29,12 +30,12 @@
             </div>
             <div class="ajout">
                 <i class="fa-solid fa-plus"></i>
-                <a href="./ajoutComposantD.html" class="btn ajout-btn"> Ajouter un composant</a>
+                <a href="./ajoutComposant.html" class="btn ajout-btn"> Ajouter un composant</a>
             </div>
         </div>
         <div class="filter">
             <form action="">
-                <input type="date" placeholder="" name="date">
+                <input type="date" id="date">
                 <select id="Etat">
                     <optgroup label="Etat">
                         <option value="disp"> Disponible</option>
@@ -54,8 +55,7 @@
 
     <div class="table-container">
         <div class="table-header">
-            <h2 id="label">Composant: Résistance</h2>
-            <img src="../../images/resistance.png" alt="image-composant">
+            
         </div>
         <br/>
         <table class="table">
@@ -68,26 +68,6 @@
                 </tr>
             </thead>
             <tbody id="table-composants">
-                <tr>
-                    <td>1001</td>
-                    <td>21/12/2022</td>
-                    <td>Disponible</td>
-                    <td><button type='button' id="btnUpdate" class="action-btn"><i
-                                class="fa-regular fa-pen-to-square"></i></button>
-                        <button type='button' id="btnDelete" class="action-btn"><i
-                                class="fa-solid fa-trash"></i></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>1002</td>
-                    <td>21/12/2022</td>
-                    <td>Disponible</td>
-                    <td><button type='button' id="btnUpdate" class="action-btn"><i
-                                class="fa-regular fa-pen-to-square"></i></button>
-                        <button type='button' id="btnDelete" class="action-btn"><i
-                                class="fa-solid fa-trash"></i></button>
-                    </td>
-                </tr>
             </tbody>
         </table>
     </div>

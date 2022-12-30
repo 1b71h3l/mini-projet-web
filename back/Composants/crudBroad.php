@@ -9,7 +9,8 @@ if ($result->num_rows > 0) {
         $sqlqte = "SELECT count(*) FROM piece where idcomposant=" . $row['idComposant'] . "";
         $resultqte = $conn->query($sqlqte);
         while ($rowqte = $resultqte->fetch_assoc()) {
-            $output .= "<div class='composant'>
+            if ($rowqte['count(*)']>0){
+                 $output .= "<div class='composant'>
         <div class='composant-img'>
             <img src='../../back/imagesComposants/" . $row['image'] . "'></img>
         </div>
@@ -19,10 +20,11 @@ if ($result->num_rows > 0) {
         </div>
         <hr/>
         <div class='composant-actions'>
-            <a href='./showPieces.html' class='action-btn'><i class='fa-solid fa-arrow-up-right-from-square'></i></a>
+            <a href='./showPieces.html?id=".$row['idComposant']."' class='action-btn'><i class='fa-solid fa-arrow-up-right-from-square'></i></a>
         </div>
     </div>  ";
-            //"<p>".$row['nom']."</p><p>".$row['image']."</p><p>".$row['idComposant']."</p>"	;
+            }
+           
         }
     }
 } else {
