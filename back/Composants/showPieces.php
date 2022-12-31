@@ -24,9 +24,10 @@ if ($result->num_rows > 0) {
         <td>".$row['idPiece']."</td>
         <td>".$row['dateAchat']."</td>
         <td style='color:".$color.";''>".$etat."</td>
-        <td><a href='./editComposant.html?idP=".$row['idPiece']."&idC=".$row['idComposant']."' type='button' id='btnUpdate' class='action-btn'><i
+        <td>
+        <a href='./editComposant.html?idP=".$row['idPiece']."&idC=".$row['idComposant']."' type='button' id='btnUpdate' class='action-btn'><i
                     class='fa-regular fa-pen-to-square'></i></a>
-            <button type='button' id='btnDelete' class='action-btn'><i
+        <button data-id='".$row['idPiece']."' type='button' id='btnDelete' class='delete action-btn'><i
                     class='fa-solid fa-trash'></i></button>
         </td>
     </tr>";

@@ -21,7 +21,7 @@ while ($rec = mysqli_fetch_row($setRec)) {
     header("Content-Disposition: attachment; filename=\"$filename\"");
     header("Pragma: no-cache");  
     header("Expires: 0"); 
-    ob_clean(); 
+    ob_clean();  // to prevent the first cellule from being empty
     echo ucwords($columnHeader) . "\n" . $setData . "\n"; 
     exit();
 

@@ -10,7 +10,7 @@ if ($result->num_rows > 0) {
         $resultqte = $conn->query($sqlqte);
         while ($rowqte = $resultqte->fetch_assoc()) {
             if ($rowqte['count(*)'] > 0) {
-                $output .= "<h2 id='label'>Composant: " . $row['nom'] . "&nbsp; &nbsp; Quantité : " . $rowqte['count(*)'] . "</h2>
+                $output .= "<h2 id='label'>Composant: " . $row['nom'] . "</h2> <h2> Quantité : " . $rowqte['count(*)'] . "</h2>
                  <img src='../../back/imagesComposants/" . $row['image'] . "' alt='image-" . $row['nom'] . "'>  ";
             }
         }
