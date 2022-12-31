@@ -17,5 +17,14 @@ $("#search").on("keyup", function() {
     });
   });
 
+  $(".download-btn").on('click',()=>{
+    $.ajax({
+      url: "../../back/Composants/downloadAllComposants.php",
+      type: "POST",
+      cache: false,
+      success: function(data){
+        window.open('../../back/Composants/downloadAllComposants.php');
+        }
+  });
 });
-
+});
