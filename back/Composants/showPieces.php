@@ -2,7 +2,7 @@
 //Remplir les informations des pièces d'un composants
 include '../db.php';
 $id = htmlspecialchars($_GET["id"]);
-$sql = "SELECT *  FROM piece where idcomposant=".$id."";
+$sql = "SELECT *  FROM piece where idcomposant=".$id." order by idPiece";
 $result = $conn->query($sql);
 $output = "";
 $etat ="";

@@ -1,5 +1,5 @@
 <?php 
-//pour remplir le drp-down list des noms des composants dans la page ajoutComposant
+//pour remplir le drop-down list des noms des composants dans la page ajoutComposant
 include '../db.php';
 $sql = "SELECT * FROM composant";
 $result = $conn->query($sql);
