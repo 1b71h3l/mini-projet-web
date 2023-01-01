@@ -1,4 +1,5 @@
 <?php
+//obtenir les informations d'un composant pour les afficher en entête 
 include '../db.php';
 $id = htmlspecialchars($_GET["id"]);
 $sql = "SELECT * FROM composant where idcomposant=".$id.""; #. $row['image'] .

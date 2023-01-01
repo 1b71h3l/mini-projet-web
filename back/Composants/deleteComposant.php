@@ -1,4 +1,5 @@
 <?php
+//delete une pièce en passant son id
 include '../db.php';
 if (isset($_GET['id'])) {
     $sql = "DELETE FROM piece WHERE idPiece=" . $_GET["id"];

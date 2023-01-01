@@ -20,7 +20,6 @@ $(document).ready(function () {
     success: function (data) {
       //  alert(data);
       $(".table-header").html(data);
-      //$('#table-composants').html(data);
     },
   });
   //importer les données et afficher les pieces
@@ -33,6 +32,7 @@ $(document).ready(function () {
       $("#table-composants").html(data);
     },
   });
+  
   //chager l'url du boutton d'ajout vers la page d'ajout du composant déja identifié(Défini)
   $(".ajout-btn").attr("href", "./ajoutComposantD.html?id=" + id);
 

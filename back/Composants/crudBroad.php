@@ -1,4 +1,5 @@
 <?php
+//Remplir les informations de la pages des composants
 //echo "<p>0 results</p> <hr/>";
 include '../db.php';
 $sql = "SELECT * FROM composant";

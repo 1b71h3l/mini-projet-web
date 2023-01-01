@@ -1,6 +1,6 @@
 <?php
+//télécharger toutes les pièces de tous les composants .xsl
 include '../db.php';
-
 $sql = "SELECT c.nom  , p.idPiece , p.dateAchat , p.etat FROM composant c , piece p where c.idcomposant=p.idcomposant  order by c.idComposant; "; 
 $setRec = mysqli_query($conn, $sql); 
 $columnHeader = '';  
