@@ -1,7 +1,8 @@
 <?php
+//Remplir les informations de la pages des composants
 //echo "<p>0 results</p> <hr/>";
 include '../db.php';
-$sql = "SELECT * FROM composant";
+$sql = "SELECT * FROM composant order by nom";
 $result = $conn->query($sql);
 $output = "";
 if ($result->num_rows > 0) {

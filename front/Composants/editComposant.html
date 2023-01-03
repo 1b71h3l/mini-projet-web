@@ -7,6 +7,7 @@
     <script src="https://kit.fontawesome.com/8eb2c0f0fd.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./editComposant.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript" src="editComposant.js"></script>
     <title>Modifier composant</title>
 </head>
 <body>
@@ -21,29 +22,28 @@
     
     <div class="header">
         <div class="return">
-            <button onclick="history.back()" ><i class="fa-solid fa-arrow-left"></i>Retour à la page précedente</button>
+            <button onclick="history.back();" ><i class="fa-solid fa-arrow-left"></i>Retour à la page précedente</button>
         </div>
     </div>
 
     <div class="container">  
         <form id="Form" method="post" action="">
-        <h2 id="label">Modifier un composant</h2>
+        <h2 id="label">Modifier une pièce</h2>
         <label for="nom">Nom</label> 
-        <input type="text" value="Résistance" name="nom" id="nom" disabled="disabled"> 
+        <input type="text" value="" name="nom" id="nom" disabled="disabled"> 
         <br/>
         <label for="date">Date d'achat</label>
-        <input type="text" value="21/12/2022" name="nom" id="nom" disabled="disabled"> 
+        <input type="text" value="21/12/2022" name="date" id="date" disabled="disabled"> 
         <br/>    
             <label for="etat">L'état de composant</label>
-            <select id="etat" >
-                <optgroup label="Etat">
-                    <option value="disp"> Disponible</option>
-                    <option value="enPanne" > En panne</option>
+            <input type="hidden" id="etat" name="etat">
+            <select id="select-etat" nom="select-etat">
+                    <option value="disponible"> Disponible</option>
+                    <option value="enpanne" > En panne</option>
                     <option value="perdu" > Perdu</option>
-                </optgroup>
             </select>
             <br/>
-            <button class="btn reset" ><i class="fa-solid fa-rotate-right"></i>Réinitialiser</button>
+            <a class="btn reset" ><i class="fa-solid fa-rotate-right"></i>Réinitialiser</a>
             <button class="btn submit-btn" type="submit"><i class="fa-solid fa-check"></i>Modifier</button>
         </form>
         <div class="image">
