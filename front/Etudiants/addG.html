@@ -4,124 +4,46 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./addG.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="./addG.css" />
     <title>Ajouter groupe</title>
   </head>
   <body>
     <nav class="navbar-container">
       <img src="../../images/logo.svg" alt="logo" />
       <ul>
-        <li><a href="../home page/index.html">ACCUEIL</a></li>
-        <li><a href="#">COMPOSANATS</a></li>
+        <li><a href="../homePage/index.html">ACCUEIL</a></li>
+        <li><a href="../Composants/board.html">COMPOSANTS</a></li>
         <li><a href="../Etudiants/list.html">ETUDIANTS</a></li>
       </ul>
     </nav>
     <div class="container">
       <h1>AJOUTER UN GROUPE</h1>
-      <div class="etud">
-        <p>Le premier etudiant</p>
-        <input type="text" placeholder="Nom" />
-        <input type="text" placeholder="Prenom" />
-        <select name="Promo">
+      <div class="form-message"></div>
+      <form id="myForm" method="post">
+        <label>Le premier etudiant</label> <br />
+        <input type="text" placeholder="Nom" name="nom1" id="nom1" />
+        <input type="text" placeholder="Prenom" name="prenom1" id="prenom1" />
+        <select id="annee1" name="annee1">
           <option value="1cp">1cp</option>
           <option value="2cp">2cp</option>
           <option value="1cs">1cs</option>
           <option value="2cs">2cs</option>
           <option value="3cs">3cs</option>
         </select>
-      </div>
-      <div class="etud">
-        <p>Le deusieme etudiant</p>
-        <input type="text" placeholder="Nom" />
-        <input type="text" placeholder="Prenom" />
-        <select name="Promo">
+        <br />
+        <label>Le deuxieme etudiant</label> <br />
+        <input type="text" placeholder="Nom" name="nom2" id="nom2" />
+        <input type="text" placeholder="Prenom" name="prenom2" id="prenom2" />
+        <select id="annee2" name="annee2">
           <option value="1cp">1cp</option>
           <option value="2cp">2cp</option>
           <option value="1cs">1cs</option>
           <option value="2cs">2cs</option>
           <option value="3cs">3cs</option>
         </select>
-      </div>
-      <p>Composants dans la boite</p>
-      <div class="comps">
-        <div class="comp">
-          <p>Resistance</p>
-          <form id="myform" method="POST" class="quantity" action="#">
-            <input
-              type="button"
-              value="-"
-              class="qtyminus minus"
-              field="quantity"
-            />
-            <input type="text" name="quantity" value="0" class="qty" />
-            <input
-              type="button"
-              value="+"
-              class="qtyplus plus"
-              field="quantity"
-            />
-          </form>
-        </div>
-        <div class="comp">
-          <p>Led</p>
-          <form id="myform" method="POST" class="quantity" action="#">
-            <input
-              type="button"
-              value="-"
-              class="qtyminus minus"
-              field="quantity"
-            />
-            <input type="text" name="quantity" value="0" class="qty" />
-            <input
-              type="button"
-              value="+"
-              class="qtyplus plus"
-              field="quantity"
-            />
-          </form>
-        </div>
-        <div class="comp">
-          <p>Condensateur</p>
-          <form id="myform" method="POST" class="quantity" action="#">
-            <input
-              type="button"
-              value="-"
-              class="qtyminus minus"
-              field="quantity"
-            />
-            <input type="text" name="quantity" value="0" class="qty" />
-            <input
-              type="button"
-              value="+"
-              class="qtyplus plus"
-              field="quantity"
-            />
-          </form>
-        </div>
-        <div class="comp">
-          <p>Interrepteur a gliciere</p>
-          <form id="myform" method="POST" class="quantity" action="#">
-            <input
-              type="button"
-              value="-"
-              class="qtyminus minus"
-              field="quantity"
-            />
-            <input type="text" name="quantity" value="0" class="qty" />
-            <input
-              type="button"
-              value="+"
-              class="qtyplus plus"
-              field="quantity"
-            />
-          </form>
-        </div>
-      </div>
-      <div class="btns">
-        <button id="annuler">ANNULER</button>
-        <button id="confirmer">CONFIRMER</button>
-      </div>
+        <button id="confirmer" type="submit">CONFIRMER</button>
+      </form>
     </div>
     <div class="footer">
       <img src="../../images/esi-logo.png" alt="esi-logo" />
@@ -141,22 +63,33 @@
         <img src="../../images/youtube.png" alt="youtube" />
       </div>
     </div>
-  </body>
-  <script>
-    jQuery(document).ready(($) => {
-      $(".quantity").on("click", ".plus", function (e) {
-        let $input = $(this).prev("input.qty");
-        let val = parseInt($input.val());
-        $input.val(val + 1).change();
-      });
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $("#myForm").on("submit", function (e) {
+          e.preventDefault();
 
-      $(".quantity").on("click", ".minus", function (e) {
-        let $input = $(this).next("input.qty");
-        var val = parseInt($input.val());
-        if (val > 0) {
-          $input.val(val - 1).change();
-        }
+          $.ajax({
+            type: "POST",
+            url: "../../back/Etudiants/ajoutGroupe.php",
+            data: new FormData(this),
+            dataType: "json",
+            contentType: false,
+            cache: false,
+            processData: false,
+
+            success: function (response) {
+              $(".form-message").css("display", "block");
+              if (response.status == 1) {
+                $("#myForm")[0].reset(); //reset the form
+                $(".form-message").html("<p>" + response.message + "</p>");
+              } else {
+                $(".form-message").css("display", "block");
+                $(".form-message").html("<p>" + response.message + "</p>");
+              }
+            },
+          });
+        });
       });
-    });
-  </script>
+    </script>
+  </body>
 </html>

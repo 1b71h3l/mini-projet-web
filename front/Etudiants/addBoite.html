@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ajouter boite</title>
+  </head>
+  <body>
+    <p>Composants dans la boite</p>
+    <div class="comps"></div>
+  </body>
+</html>
+
+$(".comps input").each(function (index) { console.log(index + ": " +
+$(this).val()); }); .comps input[type=number]{ width: 30px; outline: none;
+border: 1px solid #6D90E1; } .comps input[type=number]:focus{ outline: 3px solid
+#6D90E1; } .comps{ display: grid; grid-template-columns: repeat(2, 1fr);
+grid-auto-rows: auto; grid-gap: 1rem; } .comp{ display: flex; justify-content:
+space-between; background-color: white; border-radius: 40px; width: 400px;
+height: 40px; align-items: center; padding: 0 20px; margin: 0 30px; } .comp p{
+color: gray; font-size: 15px; }

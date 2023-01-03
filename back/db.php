@@ -2,7 +2,7 @@
 	$servername = "localhost";
 	$username = "root";
 	$password = "";
-	$db="iot";
+	$db="mini_projet_web";
 	// Create connection
 	$conn = mysqli_connect($servername, $username, $password,$db);
 

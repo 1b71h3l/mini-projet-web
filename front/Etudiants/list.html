@@ -4,73 +4,116 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <link rel="stylesheet" href="./list.css" />
     <title>Etudiants</title>
   </head>
   <body>
-    <nav class="navbar-container">
-      <img src="../../images/logo.svg" alt="logo" />
-      <ul>
-        <li><a href="../home page/index.html">ACCUEIL</a></li>
-        <li><a href="../Composants/board.html">COMPOSANATS</a></li>
-        <li><a href="../Etudiants/list.html">ETUDIANTS</a></li>
-      </ul>
-    </nav>
-    <div class="header">
-      <div class="search">
-        <form action="/action_page.php">
-          <input type="text" placeholder="Chercher un groupe" name="search" />
-        </form>
-      </div>
-      <div class="stroke">
-        <p><a href="./addG.html">AJOUTER</a></p>
-      </div>
-    </div>
-    <div class="list-container">
-      <a href="./detailG.html">
-        <div class="card">
-          <h3>2cs</h3>
-          <p>Belouad & Hattabi</p>
+    <div id="blur">
+      <nav class="navbar-container">
+        <img src="../../images/logo.svg" alt="logo" />
+        <ul>
+          <li><a href="../home page/index.html">ACCUEIL</a></li>
+          <li><a href="../Composants/board.html">COMPOSANATS</a></li>
+          <li><a href="../Etudiants/list.html">ETUDIANTS</a></li>
+        </ul>
+      </nav>
+      <div class="header">
+        <div class="search">
+          <form action="/action_page.php">
+            <input type="text" placeholder="Chercher un groupe" name="search" />
+          </form>
         </div>
-      </a>
-      <div class="card">
-        <h3>2cs</h3>
-        <p>Belouad & Hattabi</p>
+        <div class="stroke">
+          <p><a href="./addG.html">AJOUTER</a></p>
+        </div>
       </div>
-      <div class="card">
-        <h3>2cs</h3>
-        <p>Belouad & Hattabi</p>
-      </div>
-      <div class="card">
-        <h3>2cs</h3>
-        <p>Belouad & Hattabi</p>
-      </div>
-      <div class="card">
-        <h3>2cs</h3>
-        <p>Belouad & Hattabi</p>
-      </div>
-      <div class="card">
-        <h3>2cs</h3>
-        <p>Belouad & Hattabi</p>
-      </div>
-    </div>
-    <div class="footer">
-      <img src="../../images/esi-logo.png" alt="esi-logo" />
-      <div>
-        <h3>LOCALISATION</h3>
-        <p>BP 73, Post Office EL WIAM Sidi Bel Abbés 22016, Algeria</p>
-      </div>
-      <div>
-        <h3>CONTACT</h3>
-        <p>+213-48-74-94-52</p>
-        <p>contact@esi-sba.dz</p>
-      </div>
-      <div class="icons">
-        <h3>RESEAUX</h3>
-        <img src="../../images/linkedin.png" alt="linkedin" />
-        <img src="../../images/facebook.png" alt="facebook" />
-        <img src="../../images/youtube.png" alt="youtube" />
+      <div class="list-container"></div>
+      <div class="footer">
+        <img src="../../images/esi-logo.png" alt="esi-logo" />
+        <div>
+          <h3>LOCALISATION</h3>
+          <p>BP 73, Post Office EL WIAM Sidi Bel Abbés 22016, Algeria</p>
+        </div>
+        <div>
+          <h3>CONTACT</h3>
+          <p>+213-48-74-94-52</p>
+          <p>contact@esi-sba.dz</p>
+        </div>
+        <div class="icons">
+          <h3>RESEAUX</h3>
+          <img src="../../images/linkedin.png" alt="linkedin" />
+          <img src="../../images/facebook.png" alt="facebook" />
+          <img src="../../images/youtube.png" alt="youtube" />
+        </div>
       </div>
     </div>
+    <div class="popup-container"></div>
+    <script>
+      $(document).ready(function () {
+        $.ajax({
+          url: "../../back/Etudiants/afficherGroupe.php",
+          type: "POST",
+          success: function (data) {
+            $(".list-container").html(data);
+          },
+        });
+        $(document).on("click", "#arrow", function () {
+          $(".popup-container").show();
+          $("#blur").addClass("active");
+        });
+        $(document).on("click", "#close", function () {
+          $(".popup-container").hide();
+          $("#blur").removeClass("active");
+        });
+        $(document).on("click", "a[data-role=update]", function () {
+          var id = $(this).data("id");
+          $.ajax({
+            url: "../../back/etudiants/afficherPopup.php",
+            type: "POST",
+            data: {
+              id: id,
+            },
+            success: function (data) {
+              $(".popup-container").html(data);
+            },
+          });
+          $(document).on("click", "#modifier", function () {
+            var nom1 = $("#nom1").val();
+            var prenom1 = $("#prenom1").val();
+            var annee1 = $("#annee1 option:selected").text();
+            var nom2 = $("#nom2").val();
+            var prenom2 = $("#prenom2").val();
+            var annee2 = $("#annee2 option:selected").text();
+            $.ajax({
+              url: "../../back/etudiants/updateGroupe.php",
+              type: "POST",
+              data: {
+                id: id,
+                nom1: nom1,
+                prenom1: prenom1,
+                annee1: annee1,
+                nom2: nom2,
+                prenom2: prenom2,
+                annee2: annee2,
+              },
+              success: function (result) {
+                $(`<span>${result}</span>`).insertAfter(".up");
+              },
+            });
+          });
+          $(document).on("click", "#supprimer", function () {
+            $.ajax({
+              url: "../../back/etudiants/deleteGroupe.php",
+              type: "POST",
+              data: { id: id },
+              success: function (result) {
+                $(`<span>${result}</span>`).insertAfter(".up");
+              },
+            });
+          });
+        });
+      });
+    </script>
   </body>
 </html>

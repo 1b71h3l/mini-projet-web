@@ -60,25 +60,18 @@ body{
     outline: none;
 }
 
-.comp-container{
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-
-}
-
-.comp{
-    display: flex;
-    justify-content: space-between;
-    margin: 10px 100px 20px 0;
-}
-
-.comp input{
-    width: 30px;
+select{
+    background-color: white;
+    border-radius: 10px;
+    outline: 1px solid #6D90E1;
+    border: none;
+    width: 80px;
     height: 30px;
-    border: 1px solid #6D90E1;
-    border-radius: 5px;
-    outline: none;
-    text-align: center;
+    padding-left: 10px;
+}
+
+select:focus{
+    outline: 3px solid #6D90E1;
 }
 
 .btns{

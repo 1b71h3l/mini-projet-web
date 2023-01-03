@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Boite</title>
+  </head>
+  <body>
+    <h3>Composants dans la boite</h3>
+    <div class="comp-container">
+      <div class="comp">
+        <p>Resistance</p>
+        <input type="number" min="0" />
+      </div>
+      <div class="comp">
+        <p>LED</p>
+        <input type="number" min="0" />
+      </div>
+      <div class="comp">
+        <p>Condensateur</p>
+        <input type="number" min="0" />
+      </div>
+      <div class="comp">
+        <p>Interrepteur a gliciere</p>
+        <input type="number" min="0" />
+      </div>
+    </div>
+  </body>
+</html>
+
+.comp-container{ display: grid; grid-template-columns: repeat(2, 1fr); } .comp{
+display: flex; justify-content: space-between; margin: 10px 100px 20px 0; }
+.comp input{ width: 30px; height: 30px; border: 1px solid #6D90E1;
+border-radius: 5px; outline: none; text-align: center; }
