@@ -25,7 +25,7 @@ if ($result->num_rows > 0) {
         <td>".$row['idPiece']."</td>
         <td>".$row['dateAchat']."</td>
         <td style='color:".$color.";''>".$etat."</td>
-        <td>
+        <td class='noExcl'>
         <a href='./editComposant.html?idP=".$row['idPiece']."&idC=".$row['idComposant']."' type='button' id='btnUpdate' class='action-btn'><i
                     class='fa-regular fa-pen-to-square'></i></a>
         <button data-id='".$row['idPiece']."' type='button' id='btnDelete' class='delete action-btn'><i
