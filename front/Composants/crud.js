@@ -27,4 +27,12 @@ $("#search").on("keyup", function() {
         }
   });
 });
+
+tippy('.download-btn', {
+  content: 'Télécharger un fichier excel qui contient tous les composants avec leurs détails',
+  delay:[100, 200],
+  interactive: true,
+  maxWidth: 350, 
+});
+
 });
