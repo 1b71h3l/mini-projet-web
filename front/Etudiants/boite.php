@@ -22,8 +22,16 @@
     </nav>
     <div class="header">
       <h3>Composants dans la boite</h3>
-      <div class="stroke">
-        <p><a href="#">AJOUTER</a></p>
+      <div class="btns">
+        <div class="stroke" id="delete">
+          <p><a href="#">SUPPRIMER</a></p>
+        </div>
+        <div class="stroke" id="update">
+          <p><a href="#">MODIFIER</a></p>
+        </div>
+        <div class="stroke" id="add">
+          <p><a href="#">AJOUTER</a></p>
+        </div>
       </div>
     </div>
     <div class="comp-container" id="boite">
@@ -46,11 +54,12 @@
           </div>";
             }
           }
-
         }
       }
-
       ?>
+    </div>
+    <div>
+      <?php echo "<span data-id='" . $id . "'></span>"; ?>
     </div>
     <div class="footer">
       <img src="../../images/esi-logo.png" alt="esi-logo" />
@@ -71,17 +80,16 @@
       </div>
     </div>
   </div>
-  <div class="popup-container">
+  <div class="popup-container" id="popup-add">
     <div class="up">
-      <h1>Les informations du boite</h1>
+      <h1>Ajouter une boite</h1>
       <a id="close" onclick="window.location.reload(true);">close</a>
     </div>
     <div class="comp-container">
-      <form id="theForm" method="post">
+      <form id="theForm" class="form" method="post">
         <?php
 
         $output = "";
-
         $sqlBoite = $conn->query("SELECT * FROM composant");
         if ($sqlBoite->num_rows > 0) {
           while ($row = $sqlBoite->fetch_assoc()) {
@@ -91,7 +99,7 @@
               if ($rowqte['count(*)'] > 0) {
                 echo "
                 <label>" . $row['nom'] . "</label>
-                <input name='" . $row['idComposant'] . "' data-id='" . $id . "'type='number' min='0' max='" . $rowqte['count(*)'] . "'/>";
+                <input class='bla' name='" . $row['idComposant'] . "' type='number' min='0' max='" . $rowqte['count(*)'] . "'/>";
               }
             }
           }
@@ -101,30 +109,158 @@
       </form>
     </div>
   </div>
+  <div class="popup-container" id="popup-update">
+    <div class="up">
+      <h1>Modifier les composants dans la boite</h1>
+      <a id="close" onclick="window.location.reload(true);">close</a>
+    </div>
+    <div class="comp-container">
+      <form id="updateForm" class="form" method="post">
+        <?php
+
+        $output = "";
+        $sqlBoite = $conn->query("SELECT * FROM composant");
+        if ($sqlBoite->num_rows > 0) {
+          while ($row = $sqlBoite->fetch_assoc()) {
+            $sqlqte = "SELECT count(*) FROM piece WHERE idcomposant=" . $row['idComposant'] . "";
+            $resultqte = $conn->query($sqlqte);
+            while ($rowqte = $resultqte->fetch_assoc()) {
+              if ($rowqte['count(*)'] > 0) {
+                $sqlboite = "SELECT * FROM boite WHERE idGroupe=" . $id . " AND idComposant=" . $row['idComposant'] . "";
+                $resultboite = $conn->query($sqlboite);
+                if ($resultboite->num_rows > 0) {
+                  while ($rowboite = $resultboite->fetch_assoc()) {
+                    echo "
+                <label>" . $row['nom'] . "</label>
+                <input name='" . $row['idComposant'] . "' type='number' min='0' max='" . $rowqte['count(*)'] . "' value='" . $rowboite['qte'] . "'/>";
+                  }
+                } else {
+                  echo "
+                  <label>" . $row['nom'] . "</label>
+                  <input name='" . $row['idComposant'] . "' type='number' min='0' max='" . $rowqte['count(*)'] . "' value='0'/>";
+                }
+              }
+            }
+          }
+        }
+        ?>
+        <button id="ajouter" type="submit">MODIFIER</button>
+      </form>
+    </div>
+  </div>
+  <div class="popup-container" id="popup-delete">
+    <div class="up">
+      <h1>Supprimer des composants dans la boite</h1>
+      <a id="deleteAll" onclick="window.location.reload(true);">delete</a>
+      <a id="close" onclick="window.location.reload(true);">close</a>
+    </div>
+    <div class="comp-container">
+      <div class="form">
+        <?php
+
+        $output = "";
+        $sqlBoite = $conn->query("SELECT * FROM composant");
+        if ($sqlBoite->num_rows > 0) {
+          while ($row = $sqlBoite->fetch_assoc()) {
+            $sqlqte = "SELECT count(*) FROM piece WHERE idcomposant=" . $row['idComposant'] . "";
+            $resultqte = $conn->query($sqlqte);
+            while ($rowqte = $resultqte->fetch_assoc()) {
+              if ($rowqte['count(*)'] > 0) {
+                $sqlboite = "SELECT * FROM boite WHERE idGroupe=" . $id . " AND idComposant=" . $row['idComposant'] . "";
+                $resultboite = $conn->query($sqlboite);
+                if ($resultboite->num_rows > 0) {
+                  while ($rowboite = $resultboite->fetch_assoc()) {
+                    echo "
+                <label>" . $row['nom'] . "</label>
+                <a href='#' class='btn-delete' data-id=" . $row['idComposant'] . ">delete</a>";
+                  }
+                }
+              }
+            }
+          }
+        }
+        ?>
+      </div>
+    </div>
+  </div>
   <script>
     $(document).ready(function () {
-      $(document).on("click", ".stroke", function () {
-        $(".popup-container").show();
+      $(document).on("click", "#add", function () {
+        $("#popup-add").show();
         $("#blur").addClass("active");
       });
       $("#theForm").on("submit", function (e) {
         e.preventDefault();
 
         var names = {};
-        $('input').each(function () {
-          var id = $(this).attr('name');
+        $('.bla').each(function () {
+          var idComposant = $(this).attr('name');
           var qte = $(this).val();
-          names[id] = qte;
+          names[idComposant] = qte;
         });
-        // console.log(names);
-        var id = $('input').data('id');
+        console.log(names);
+        var id = $('span').data('id');
         $.ajax({
           type: "POST",
           url: "../../back/Etudiants/ajouterBoite.php",
           data: { id: id, names: JSON.stringify(names) },
           success: function (data) {
             alert("Boite ajoutee!");
+            console.log(data);
+          }
+        })
+      });
+      $(document).on('click', '#update', function () {
+        $("#popup-update").show();
+        $("#blur").addClass("active");
+      });
+      $("#updateForm").on("submit", function (e) {
+        e.preventDefault();
+
+        var names = {};
+        $('#popup-update input').each(function () {
+          var idComposant = $(this).attr('name');
+          var qte = $(this).val();
+          names[idComposant] = qte;
+        });
+        console.log(names);
+        var id = $('span').data('id');
+        $.ajax({
+          type: "POST",
+          url: "../../back/Etudiants/updateBoite.php",
+          data: { id: id, names: JSON.stringify(names) },
+          success: function (data) {
+            alert("Boite modifiee!");
             // console.log(data);
+          }
+        })
+      });
+      $(document).on('click', '#delete', function () {
+        $("#popup-delete").show();
+        $("#blur").addClass("active");
+      });
+      $(document).on('click', '.btn-delete', function () {
+        var idComposant = $(this).data('id');
+        var idGroupe = $('span').data('id');
+        $.ajax({
+          type: "POST",
+          url: "../../back/Etudiants/deleteComposant.php",
+          data: { idComposant: idComposant, idGroupe: idGroupe },
+          success: function (data) {
+            alert("Le Composant est bien supprime!");
+            console.log(data);
+          }
+        })
+      });
+      $(document).on('click', '#deleteAll', function () {
+        var idGroupe = $('span').data('id');
+        $.ajax({
+          type: "POST",
+          url: "../../back/Etudiants/deleteBoite.php",
+          data: { idGroupe: idGroupe },
+          success: function (data) {
+            alert("Boite supprimee!");
+            console.log(data);
           }
         })
       });

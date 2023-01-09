@@ -76,39 +76,39 @@
               $(".popup-container").html(data);
             },
           });
-        });
-        $(document).on("click", "#modifier", function () {
-          var nom1 = $("#nom1").val();
-          var prenom1 = $("#prenom1").val();
-          var annee1 = $("#annee1 option:selected").text();
-          var nom2 = $("#nom2").val();
-          var prenom2 = $("#prenom2").val();
-          var annee2 = $("#annee2 option:selected").text();
-          $.ajax({
-            url: "../../back/etudiants/updateGroupe.php",
-            type: "POST",
-            data: {
-              id: id,
-              nom1: nom1,
-              prenom1: prenom1,
-              annee1: annee1,
-              nom2: nom2,
-              prenom2: prenom2,
-              annee2: annee2,
-            },
-            success: function (result) {
-              $(`<span>${result}</span>`).insertAfter(".up");
-            },
+          $(document).on("click", "#modifier", function () {
+            var nom1 = $("#nom1").val();
+            var prenom1 = $("#prenom1").val();
+            var annee1 = $("#annee1 option:selected").text();
+            var nom2 = $("#nom2").val();
+            var prenom2 = $("#prenom2").val();
+            var annee2 = $("#annee2 option:selected").text();
+            $.ajax({
+              url: "../../back/etudiants/updateGroupe.php",
+              type: "POST",
+              data: {
+                id: id,
+                nom1: nom1,
+                prenom1: prenom1,
+                annee1: annee1,
+                nom2: nom2,
+                prenom2: prenom2,
+                annee2: annee2,
+              },
+              success: function (result) {
+                $(`<span>${result}</span>`).insertAfter(".up");
+              },
+            });
           });
-        });
-        $(document).on("click", "#supprimer", function () {
-          $.ajax({
-            url: "../../back/etudiants/deleteGroupe.php",
-            type: "POST",
-            data: { id: id },
-            success: function (result) {
-              $(`<span>${result}</span>`).insertAfter(".up");
-            },
+          $(document).on("click", "#supprimer", function () {
+            $.ajax({
+              url: "../../back/etudiants/deleteGroupe.php",
+              type: "POST",
+              data: { id: id },
+              success: function (result) {
+                $(`<span>${result}</span>`).insertAfter(".up");
+              },
+            });
           });
         });
       });

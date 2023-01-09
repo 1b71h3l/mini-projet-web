@@ -45,6 +45,10 @@ body{
     justify-content: space-around;
 }
 
+.btns{
+    display: flex;
+}
+
 .stroke{
     border-radius: 40px;
     border: 2px solid #FFFFFF;
@@ -81,6 +85,7 @@ h3{
 .up{
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .up a{
@@ -117,19 +122,29 @@ h3{
     text-align: center; 
 }
 
-#theForm{
+.form{
     display: grid; 
     grid-template-columns: repeat(2, 1fr 50px);
     row-gap: 10px;
 }
 
-#theForm input{
+.form input{
     width: 30px; 
     height: 30px; 
     border: 1px solid #6D90E1;
     border-radius: 5px; 
     outline: none; 
     text-align: center; 
+}
+
+.btn-delete{
+    text-decoration: none;
+    color: red;
+}
+
+#deleteAll{
+    margin: 0 20px;
+    color: red;
 }
 
 .active{
