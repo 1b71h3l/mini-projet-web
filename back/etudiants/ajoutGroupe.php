@@ -22,7 +22,7 @@ if (isset($_POST['nom1']) || isset($_POST['prenom1']) || isset($_POST['annee1'])
             $response['message'] = "groupe ajouter avec success !";
             $response['status'] = 1;
         } else {
-            echo "Error: " . $sql . "<br>" . $conn->error;
+            echo "Error: " . $sql . "<br>";
         }
     } else {
         $response['message'] = "remplir tout les champs !";
