@@ -27,6 +27,9 @@
         <div class="stroke">
           <p><a href="./addG.html">AJOUTER</a></p>
         </div>
+        <div class="stroke">
+          <p><a href="../../word.php">WORD</a></p>
+        </div>
       </div>
       <div class="list-container"></div>
       <div class="footer">
@@ -71,9 +74,7 @@
           $.ajax({
             url: "../../back/etudiants/afficherPopup.php",
             type: "POST",
-            data: {
-              id: id,
-            },
+            data: { id: id },
             success: function (data) {
               $(".popup-container").html(data);
             },
